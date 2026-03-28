@@ -1,0 +1,18 @@
+on:
+  push:
+    branches: _
+jobs:
+  _:
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: _
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          retention-days: 1
+          include-hidden-files: false
+      - uses: actions/deploy-pages@v5
